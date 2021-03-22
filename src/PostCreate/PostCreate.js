@@ -1,15 +1,14 @@
-import React from 'react';
+import React,{  useState,useEffect } from 'react';
 import './PostCreate.scss';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useHistory } from 'react-router-dom';
 import { PostCreateSchema } from './post-create.schema';
 import environment from '../environments/index';
 import { UserService } from '../services/user.service';
-
 function PostCreate() {
 
 	const history = useHistory();
-
+	let [showImage,setShowImage]=useState("hello")
 	async function submit(values) {
 		const data = new FormData();
 		data.append('image', values.image);
@@ -28,7 +27,21 @@ function PostCreate() {
 			console.log(err);
 		}
 	}
+	function encodeImageFileAsURL(element) {
+		return new Promise((res, rej) => { 
+			var file = element.target.files[0];
+			var reader = new FileReader();
+			reader.onloadend = () => {
+				console.log(reader)
+				res(reader.result)
+			}
+			reader.readAsDataURL(file);
 
+		})
+	  }
+	const [posts, setPosts] = useState([]);
+
+	
 	return (
 		<div className="d-flex row">
 			<div className="col-lg-6 order-sm-0 order-lg-1 my-3">
@@ -44,8 +57,13 @@ function PostCreate() {
 								       id="image"
 								       name="image"
 								       className="form-control"
-								       onChange={(e) => setFieldValue('image', e.target.files[0])}
-								/>
+								       onChange={async (e) =>{ setFieldValue('image', e.target.files[0])
+									   let imageString=await encodeImageFileAsURL(e)
+									   imageString = imageString.replace("data:image/png;base64,","");
+									   console.log(imageString)
+
+									   setShowImage(imageString)
+									   console.log(showImage)}}/>
 								<ErrorMessage component="small" name="image" className="PostCreate__form__error" />
 							</div>
 							<div className="form-group my-3">
@@ -59,6 +77,9 @@ function PostCreate() {
 										disabled={isSubmitting}>
 									{ isSubmitting ? 'Posting...' : 'Post' }
 								</button>
+							</div>
+							<div>
+				<img src={'data:; base64,' + showImage} className="Post__image" />
 							</div>
 						</Form>
 					)}

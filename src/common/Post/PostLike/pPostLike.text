@@ -1,0 +1,4 @@
+מה זה useParams
+
+מה זה let likesByUsername = await UserService.getLikesLength(data._id)
+

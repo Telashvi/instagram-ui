@@ -32,7 +32,33 @@ export class UserService {
 			body: JSON.stringify(data)
 		});
 	}
-
+	static async follow(followingUserId,followedUserId){
+		return fetch(environment.apiUrl + '/user/'+followingUserId+'/follow', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: UserService.getToken()
+			},
+			body: JSON.stringify({followingUserId:followingUserId,followedUserId:followedUserId})
+		})
+	}
+	static async unfollow(followingUserId,followedUserId){
+		return fetch(environment.apiUrl + '/user/'+followingUserId+'/unfollow', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({followingUserId:followingUserId,followedUserId:followedUserId})
+		})
+	}
+	static async checkIfFollow(username){
+		const res = await fetch(environment.apiUrl + '/user/'+username+'/check', {
+			headers: {
+				Authorization: UserService.getToken()
+			},
+		});
+		return res.status
+	}
 	static login(credentials) {
 		return fetch(environment.apiUrl + '/user/login', {
 			method: 'POST',
@@ -40,18 +66,42 @@ export class UserService {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(credentials)
-		});
+		})
+		
 	}
-
+	
 	static async getPosts(username) {
 		const res = await fetch(environment.apiUrl + '/user/' + username + '/posts', {
 			headers: {
 				Authorization: UserService.getToken()
 			}
 		});
+		// console.log("resShow",res.json())	
 		return res.json();
 	}
 
+	static async getLikes(username) {
+		const res = await fetch(environment.apiUrl + '/user/' + username + '/likes', {
+			headers: {
+				Authorization: UserService.getToken()
+			}
+		});
+		// console.log("resShow",res.json())	
+		return res.json();
+	}
+
+	static async getLikesLength(postId){
+		const res = await fetch(environment.apiUrl + '/post/likeslength',{
+			headers: {
+				Authorization: UserService.getToken(),
+				'Content-Type': 'application/json',
+			},
+			method: 'POST',
+			body: JSON.stringify({postId: postId})
+		})
+		return res.json();
+	}
+	
 	static async get(username) {
 		const res = await fetch(environment.apiUrl + '/user/' + username, {
 			headers: {
@@ -69,7 +119,28 @@ export class UserService {
 		});
 		return res.json();
 	}
-
+	
+	static async edit(data){
+		return fetch(environment.apiUrl + '/user', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(data)
+		});
+		
+	}
+	static async getUserData(username){
+		const res= await fetch(environment.apiUrl + '/user/getuserdata', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({username: username})
+		})
+		return res.json();
+		
+	}
 }
 
 

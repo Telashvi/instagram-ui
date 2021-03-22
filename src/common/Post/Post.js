@@ -1,17 +1,30 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import Avatar from '../Avatar/Avatar';
 import './Post.scss';
 import { Link } from 'react-router-dom';
 import PostDate from './PostDate/PostDate';
+import PostLike from './PostLike/PostLike';
+function Post({ data,username  }) {
 
-function Post({ data }) {
+	const [usernameToLink,setUsernameToLink]=useState("")
+	useEffect(() => {
+		if (username===undefined){
+			setUsernameToLink(data.user.username)
+		} else{
+			setUsernameToLink(username.username)
+		}
+	}, [data, username]);
+	
+
 	return (
 		<div className="col-12 col-md-4">
 			<article className="Post">
 				<header>
+					<Link to={'/profile/' +  usernameToLink}>
 					<div className="Post__user">
-						<Avatar size="md" image={data.user.avatar} />
+						<Avatar size="md" image={data.user.avatar}  />
 					</div>
+					</Link>
 					<div className="Post__date">
 
 							<PostDate date={data.createdAt} />
@@ -25,6 +38,9 @@ function Post({ data }) {
 				<div className="Post__content">
 					<h1 className="Post__description">{data.description}</h1>
 				</div>
+				<PostLike data={data}/> 
+				
+				
 			</article>
 		</div>
 	);

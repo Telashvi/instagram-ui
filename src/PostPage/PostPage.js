@@ -4,7 +4,8 @@ import './PostPage.scss';
 import { PostService } from '../services/post.service';
 import Avatar from '../common/Avatar/Avatar';
 import PostDate from '../common/Post/PostDate/PostDate';
-
+import PostLike from '../common/Post/PostLike/PostLike';
+import Comments from '../common/Comments/Comments'
 function PostPage() {
 
 	const { id } = useParams();
@@ -41,13 +42,15 @@ function PostPage() {
 			<div className="col-md-4">
 				<header>
 					<div className="PostPage__user">
-						<Link to={`/profile/${post.user._id}`} className="d-flex">
+						<Link to={`/profile/${post.user.username}`} className="d-flex">
 							<Avatar size="md" image={post.user.avatar} />
 							<h3 className="PostPage__user__username">{post.user.username}</h3>
 						</Link>
 					</div>
+					<PostLike data={post}/> 
 				</header>
 				<hr />
+				<Comments postId={post._id}/>
 			</div>
 		</div>}
 	</div>

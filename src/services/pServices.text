@@ -1,0 +1,35 @@
+הסבר מה זה static () 
+
+הסבר למה הכל בתוך קלאס 
+
+הסבר מה fetch 
+
+מה ההבדל בין POST ל GET
+
+מה זה Authorization, 'Content-Type', body JSON.stringify, .then(res => res.json())
+
+הסבר כל חלק בפונקצייה הזאת למשל 
+static like(postId,username,LoggedInUser) {
+		return fetch(environment.apiUrl + '/post/givelike', {
+			headers: { // מה זה Authorization, 'Content-Type', body JSON.stringify, .then(res => res.json()); 
+				Authorization: UserService.getToken(),
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({ postId: postId,username:username,LoggedInUser:LoggedInUser }),
+			method: 'POST'
+		}).then(res => res.json());
+
+
+
+ולעומת זאת למשל 
+
+static async get(id) {
+		const res = await fetch(environment.apiUrl + '/post/' + id, {
+			headers: { 
+				Authorization: UserService.getToken()
+			}
+		});
+		return res.json();
+	}
+
+    

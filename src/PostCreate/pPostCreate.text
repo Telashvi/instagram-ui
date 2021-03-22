@@ -1,0 +1,10 @@
+מה זה: 
+const data = new FormData();
+		data.append('image', values.image);
+		data.append('description', values.description);
+
+הסבר את המשך פונקציית submit 
+
+הבן איך Formik 
+עובד ב
+return 

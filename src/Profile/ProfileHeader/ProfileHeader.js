@@ -16,8 +16,8 @@ function ProfileHeader({ username, postNum }) {
 
 	return (
 		<div className="mt-5">
-			<h2>{user.username}</h2>
 			<Avatar image={user.avatar} size="lg" />
+			<h2>{user.username}</h2>
 			<p>{postNum} posts</p>
 		</div>
 	);

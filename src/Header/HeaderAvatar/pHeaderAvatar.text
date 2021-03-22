@@ -1,0 +1,4 @@
+מה זה השורה הזאת של useContext
+
+const { user } = useContext(UserContext);
+

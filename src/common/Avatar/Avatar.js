@@ -4,13 +4,12 @@ import avatarDefault from './avatar.jpg';
 import './Avatar.scss';
 
 function Avatar(props) {
-
-	const image = props.image || avatarDefault;
+	let editedAvatar=avatarDefault.replace("data:image/jpeg;base64,","");
+	const image = props.image || editedAvatar;
 	const size = props.size || 'md';
 	const className = 'Avatar--' + size;
-
 	return (
-		<img src={image} alt="avatar" className={'Avatar ' + className} />
+		<img src={'data:; base64,' + image} alt="avatar" className={'Avatar ' + className} />
 	);
 }
 

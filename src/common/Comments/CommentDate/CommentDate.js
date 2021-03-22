@@ -1,6 +1,6 @@
 import React from 'react';
 
-function PostDate(props) {
+function CommentDate(props) {
 
 	const formatDate = (dateStr) => {
 		const date = new Date(dateStr);
@@ -16,4 +16,4 @@ function PostDate(props) {
 	);
 }
 
-export default PostDate;
+export default CommentDate;

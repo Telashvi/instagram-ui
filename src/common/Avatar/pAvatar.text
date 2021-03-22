@@ -1,0 +1,9 @@
+מה קורה בשורות האלו:
+Avatar.propTypes = {
+	size: PropTypes.oneOf(['sm', 'md', 'lg'])
+};
+
+!@#$%^&*()
+
+
+

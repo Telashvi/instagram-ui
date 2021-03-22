@@ -1,0 +1,6 @@
+מה קורה בשורות האלו:
+
+	const formatDate = (dateStr) => {
+		const date = new Date(dateStr);
+
+return months[date.getMonth()] + ' ' + date.getDate();

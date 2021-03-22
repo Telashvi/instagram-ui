@@ -1,0 +1,4 @@
+מה הכוונה בשורה הזאת 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faPlusSquare, faSearch } from '@fortawesome/free-solid-svg-icons';
+
