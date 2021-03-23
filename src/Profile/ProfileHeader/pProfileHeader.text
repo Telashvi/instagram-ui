@@ -1,3 +1,6 @@
 למה כאן יש אובייקט ריק ולא סוגריים רגילות ריקות 
 const [user, setUser] = useState({});
+מה זה זה <p> {userData?.followers?.length}followers</p>
+
+
 

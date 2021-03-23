@@ -12,7 +12,6 @@ import { UserContext } from '../user-context';
  function Profile() {
 
 	const { username } = useParams(); // followed user 
-	const followed = username
 	const [posts, setPosts] = useState([]);
 	// const [likes, setLikes] = useState([]);
 	const [showEdit,setShowEdit]=useState(false)
@@ -20,6 +19,8 @@ import { UserContext } from '../user-context';
 	const [showUnfollow,setShowUnfollow]=useState(false)
 	const [followingUserId,setFollowingUserId] = useState("")
 	const [followedUserId,setFollowedUserId] = useState("")
+	const [userData,setUserData]=useState("")
+
 	useEffect(async() => {
 		const user = await UserService.me(); // following user
 		if (username===user.username){
@@ -36,7 +37,7 @@ import { UserContext } from '../user-context';
 			}
 		}
 		async function checkIfFollow(){
-			const status = await UserService.checkIfFollow(username)
+			const status = await UserService.checkIfFollow(followingUserId,followedUserId)
 			console.log(status)
 			if (status===200){
 				setShowFollow(false)
@@ -45,19 +46,24 @@ import { UserContext } from '../user-context';
 				setShowFollow(true)
 				setShowUnfollow(false)
 			}
+			if (followingUserId===followedUserId){
+				setShowFollow(false)
+				setShowUnfollow(false)
+			}
 		}
 		async function getUserData(){
 			const data = await UserService.getUserData(username)
 			setFollowedUserId(data._id)
 			setFollowingUserId(user._id)
 		}
+		getUserData()
 		checkIfFollow()
 		getPosts();
-		getUserData()
 		
 	}, [username,followingUserId]);
 	
-
+	
+	
 	async function follow(){
 		await UserService.follow(followingUserId,followedUserId)
 		setShowFollow(false)
@@ -65,24 +71,37 @@ import { UserContext } from '../user-context';
 	}
 
 	async function unfollow(){
-		await UserService.unfollow(username)
+		await UserService.unfollow(followingUserId,followedUserId)
 		setShowFollow(true)
 				setShowUnfollow(false)
 			
 	}
 	
-	function check(){
-		console.log("followingUserId:",followingUserId,"followedUserId:",followedUserId)
+	async function getPosts() {
+		try {
+			const posts = await UserService.getPosts(username);
+			setPosts(posts);
+		} catch(err) {
+			console.log(err);
+		}
 	}
+	
+	// async function getFollowers(){
+	// 	const followers = await UserService.getFollowers(username)
+	// 	setFollowers(followers.length)
+	// }
+	// function check(){
+	// 	console.log("followingUserId:",followingUserId,"followedUserId:",followedUserId)
+	// }
 	return (
 	<>
-		<ProfileHeader username={username} postNum={posts.length}   />
+		<ProfileHeader username={username} postNum={posts.length}  />
 		{showEdit && <div className="nav-item">
 				<Link className="nav-link" to={"/profile/"+username+"/edit"}>
 					<FontAwesomeIcon icon={faPencilAlt} />
 				</Link>
 			</div>}
-			<button onClick={check}>check follow data</button>
+			{/* <button onClick={check}>check follow data</button> */}
 			{showFollow && <div className="nav-item">
 					<button onClick={follow}>Follow   <FontAwesomeIcon icon={faMemory} /></button>
 			</div>}
@@ -92,7 +111,7 @@ import { UserContext } from '../user-context';
 		<hr />
 		<div className="row">
 			{posts.map(post => (
-				<Post key={post._id} data={post} username={{username}} />
+				<Post key={post._id} data={post} username={{username}} getPosts={getPosts} />
 			))}
 		</div>
 		<ul className="nav">

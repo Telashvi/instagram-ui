@@ -4,7 +4,7 @@ import './Post.scss';
 import { Link } from 'react-router-dom';
 import PostDate from './PostDate/PostDate';
 import PostLike from './PostLike/PostLike';
-function Post({ data,username  }) {
+function Post({ data,username,getPosts  }) {
 
 	const [usernameToLink,setUsernameToLink]=useState("")
 	useEffect(() => {
@@ -38,7 +38,7 @@ function Post({ data,username  }) {
 				<div className="Post__content">
 					<h1 className="Post__description">{data.description}</h1>
 				</div>
-				<PostLike data={data}/> 
+				<PostLike data={data} getPosts={getPosts}/> 
 				
 				
 			</article>

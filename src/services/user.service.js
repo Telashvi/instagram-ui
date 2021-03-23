@@ -51,11 +51,14 @@ export class UserService {
 			body: JSON.stringify({followingUserId:followingUserId,followedUserId:followedUserId})
 		})
 	}
-	static async checkIfFollow(username){
-		const res = await fetch(environment.apiUrl + '/user/'+username+'/check', {
+	static async checkIfFollow(followingUserId,followedUserId){
+		const res = await fetch(environment.apiUrl + '/user/'+followingUserId+'/check', {
+			method: 'POST',
 			headers: {
-				Authorization: UserService.getToken()
+				Authorization: UserService.getToken(),
+				'Content-Type': 'application/json'
 			},
+			body: JSON.stringify({followingUserId:followingUserId,followedUserId:followedUserId})
 		});
 		return res.status
 	}
@@ -78,6 +81,15 @@ export class UserService {
 		});
 		// console.log("resShow",res.json())	
 		return res.json();
+	}
+
+	static async getFollowers(username){
+		const res = await fetch(environment.apiUrl + '/user/'+username+'/followers', {
+		headers:{
+			Authorization: UserService.getToken()
+		}
+	});
+		return res.json()
 	}
 
 	static async getLikes(username) {
