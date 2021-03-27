@@ -6,7 +6,7 @@ import { PostCreateSchema } from './post-create.schema';
 import environment from '../environments/index';
 import { UserService } from '../services/user.service';
 function PostCreate() {
-
+	
 	const history = useHistory();
 	let [showImage,setShowImage]=useState(null)
 	const [showPreview,setShowPreview]=useState(false)
@@ -40,7 +40,6 @@ function PostCreate() {
 
 		})
 	  }
-	const [posts, setPosts] = useState([]);
 
 	
 	return (

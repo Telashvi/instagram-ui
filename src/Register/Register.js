@@ -19,6 +19,9 @@ function Register() {
 			setShowImage(avatar)}
 	},[])
 
+	useEffect(() => {
+
+	},[])
 	
 	function submit(values) {
 		setDisabled(true)
