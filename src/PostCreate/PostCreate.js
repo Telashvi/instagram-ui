@@ -8,7 +8,8 @@ import { UserService } from '../services/user.service';
 function PostCreate() {
 
 	const history = useHistory();
-	let [showImage,setShowImage]=useState("hello")
+	let [showImage,setShowImage]=useState(null)
+	const [showPreview,setShowPreview]=useState(false)
 	async function submit(values) {
 		const data = new FormData();
 		data.append('image', values.image);
@@ -61,7 +62,7 @@ function PostCreate() {
 									   let imageString=await encodeImageFileAsURL(e)
 									   imageString = imageString.replace("data:image/png;base64,","");
 									   console.log(imageString)
-
+										setShowPreview(true)
 									   setShowImage(imageString)
 									   console.log(showImage)}}/>
 								<ErrorMessage component="small" name="image" className="PostCreate__form__error" />
@@ -79,7 +80,7 @@ function PostCreate() {
 								</button>
 							</div>
 							<div>
-				<img src={'data:; base64,' + showImage} className="Post__image" />
+				{showPreview && <img src={'data:; base64,' + showImage} className="Post__image" />}
 							</div>
 						</Form>
 					)}
