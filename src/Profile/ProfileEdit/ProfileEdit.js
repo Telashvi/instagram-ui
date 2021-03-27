@@ -128,7 +128,8 @@ function ProfileEdit() {
 								       className="form-control"
 								       onChange={async (e) =>{ setFieldValue('image', e.target.files[0])
 									   let imageString=await encodeImageFileAsURL(e)
-									   imageString = imageString.replace("data:image/png;base64,","");
+									   if (imageString.includes("png")) imageString = imageString.replace("data:image/png;base64,","");
+									   if (imageString.includes("jpeg")) imageString=imageString.replace("data:image/jpeg;base64,","");
 									   setShowImage(imageString)
 									   }}/>
 								<ErrorMessage component="small" name="image" className="PostCreate__form__error" />

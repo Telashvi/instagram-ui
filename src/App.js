@@ -15,7 +15,7 @@ import Profile from './Profile/Profile';
 import Search from './Search/Search';
 import ProfileEdit from './Profile/ProfileEdit/ProfileEdit';
 import Logout from './Logout/Logout';
-
+import Explore from './Explore/Explore';
 function App() {
     const history = useHistory();
     const [user, setUser] = useState({});
@@ -70,6 +70,9 @@ function App() {
                     </Route>
                     <Route path="/logout">
                         <Logout />
+                    </Route>
+                    <Route path="/explore" >
+                        <Explore/>
                     </Route>
                     <Route path="/" exact>
                         <Feed />

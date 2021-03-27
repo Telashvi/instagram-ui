@@ -74,6 +74,13 @@ export class PostService {
 			}
 		}).then(res => res.json());
 	}
+	static exploreFeed() {
+		return fetch(environment.apiUrl + '/post/explorefeed', {
+			headers: {
+				Authorization: UserService.getToken()
+			}
+		}).then(res => res.json());
+	}
 
 	static like(postId, username, LoggedInUser) {
 		return fetch(environment.apiUrl + '/post/givelike', {

@@ -142,13 +142,24 @@ export class UserService {
 		});
 		
 	}
-	static async getUserData(username){
+	static async getUserData(username,userId){
 		const res= await fetch(environment.apiUrl + '/user/getuserdata', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({username: username})
+			body: JSON.stringify({username: username,userId:userId})
+		})
+		return res.json();
+		
+	}
+	static async getUserDataById(userId){
+		const res= await fetch(environment.apiUrl + '/user/getuserdatabyid', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({userId:userId})
 		})
 		return res.json();
 		

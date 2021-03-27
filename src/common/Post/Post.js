@@ -23,6 +23,7 @@ function Post({ data,username,getPosts  }) {
 					<Link to={'/profile/' +  usernameToLink}>
 					<div className="Post__user">
 						<Avatar size="md" image={data.user.avatar}  />
+						{data.user.username}
 					</div>
 					</Link>
 					<div className="Post__date">

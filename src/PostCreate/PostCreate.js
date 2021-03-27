@@ -22,7 +22,7 @@ function PostCreate() {
 					Authorization: UserService.getToken()
 				}
 			});
-			history.push('/');
+			history.push('/explore');
 		} catch(err) {
 			console.log(err);
 		}
