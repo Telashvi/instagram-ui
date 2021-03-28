@@ -142,6 +142,26 @@ export class UserService {
 		});
 		
 	}
+	static async checkEmail(email){
+		const res= await fetch(environment.apiUrl + '/user/checkemail', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({email: email})
+		})
+		return res.json();
+	}
+	static async checkUsername(username){
+		const res= await fetch(environment.apiUrl + '/user/checkusername', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({username: username})
+		})
+		return res.json();
+	}
 	static async getUserData(username,userId){
 		const res= await fetch(environment.apiUrl + '/user/getuserdata', {
 			method: 'POST',

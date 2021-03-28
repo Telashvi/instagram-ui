@@ -24,6 +24,7 @@ function Register() {
 	},[])
 	
 	function submit(values) {
+		console.log("working")
 		setDisabled(true)
 		values.avatar=showImage
 		UserService.create(values)
@@ -39,6 +40,7 @@ function Register() {
 				}
 				console.log('failure!!!');
 			});
+			
 	}
 	function encodeImageFileAsURL(element) {
 		return new Promise((res, rej) => { 
