@@ -6,8 +6,8 @@ import avatarDefault from '../../common/Avatar/avatar.jpg';
 import './ProfileEdit.scss';
 import { UserContext } from '../../user-context';
 function ProfileEdit() {
-		const { setUser } = useContext(UserContext);
-		const { user } = useContext(UserContext);
+	const { setUser, user } = useContext(UserContext);
+	console.log(user);
       const [showSuccess, setSuccess] = useState(false);
 	  const [currentUser,setCurrentUser] = useState("")
       async function getUser(){
