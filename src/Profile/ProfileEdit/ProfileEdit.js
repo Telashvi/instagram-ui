@@ -4,13 +4,18 @@ import React, { useEffect, useState,useContext } from 'react';
 import { UserService } from '../../services/user.service';
 import avatarDefault from '../../common/Avatar/avatar.jpg';
 import './ProfileEdit.scss';
+import { UserContext } from '../../user-context';
 function ProfileEdit() {
+		const { setUser } = useContext(UserContext);
+		const { user } = useContext(UserContext);
       const [showSuccess, setSuccess] = useState(false);
+	  const [currentUser,setCurrentUser] = useState("")
       async function getUser(){
             const user = await UserService.me();
             const userData = await UserService.getUserData(user.username)
             setUserData(userData);
 			console.log(userData)
+			setCurrentUser(user.username)
       }
       const [userData,setUserData]=useState({})
       useEffect(() => {
@@ -48,21 +53,26 @@ function ProfileEdit() {
     	 function submit(){
             if (password==="Same as current"){
                   setValues({
+						currentUser:currentUser,
                         username : username,
                         password : userData.password,
                         bio:bio,
                         email:email,
 						avatar: showImage
                   })
+				  setUser(username)
+				  console.log("setUser is now:",user)
                   setEditIt(true)
             } if (password!=="Same as current") {
                   setValues({
+						currentUser:currentUser,
                         username : username,
                         password : password,
                         bio:bio,
                         email:email
                   })
 				  setEditIt(true)
+				  setUser(username)
             }  
       }
       

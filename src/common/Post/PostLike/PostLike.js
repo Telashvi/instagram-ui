@@ -15,8 +15,7 @@ function PostLike({ data,getPosts   }) {
 		setLikesLength(likesByUsername.length)
 		}
 		getLengthOfLikes()
-		},
-		[username,gaveLikeTo,data._id,likeButton])
+		},[likeButton])
 	useEffect(() => {
 	
 		async function getInfoOfLikes() {
@@ -38,7 +37,7 @@ function PostLike({ data,getPosts   }) {
 		
 		getInfoOfLikes();
 		
-	},[username,gaveLikeTo,data._id]);
+	},[likeButton]);
 
 async function toggleLike(){
 		const LoggedInUser = await UserService.me();
