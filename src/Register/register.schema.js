@@ -26,7 +26,7 @@ function isUnique(field, value) {
 	if (memo[field].hasOwnProperty(value)) {
 		return memo[field][value];
 	}
-	fetch(`http://localhost:4000/user/check?${field}=${value}`)
+	fetch(environment.apiUrl+`/user/check?${field}=${value}`)
 		.then(res => res.json())
 		.then(res => {
 			memo[field][value] = !res;
