@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-
+import environment from '../environments/index';
 export const registerSchema = yup.object().shape({
 	username: yup.string()
 		.min(2, 'Username is too short')

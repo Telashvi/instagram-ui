@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 import { UserService } from '../../services/user.service';
-
+import environment from '../../environments/index';
 export const profileedit = yup.object().shape({
 	username: yup.string()
 		.min(2, 'Username is too short')
