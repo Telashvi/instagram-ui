@@ -142,23 +142,23 @@ export class UserService {
 		});
 		
 	}
-	static async checkEmail(email){
+	static async checkEmail(email,currentLoggedInEmail){
 		const res= await fetch(environment.apiUrl + '/user/checkemail', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({email: email})
+			body: JSON.stringify({email: email,currentLoggedInEmail:currentLoggedInEmail})
 		})
 		return res.json();
 	}
-	static async checkUsername(username){
+	static async checkUsername(username,loggedInUser){
 		const res= await fetch(environment.apiUrl + '/user/checkusername', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({username: username})
+			body: JSON.stringify({username: username,loggedInUser: loggedInUser})
 		})
 		return res.json();
 	}

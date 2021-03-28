@@ -47,11 +47,15 @@ export const profileedit = yup.object().shape({
 //         }
 
         async function isUsernameUnique(value){
-            const result = await UserService.checkUsername(value)
+			const user = await UserService.me();
+            const userData = await UserService.getUserData(user.username)
+            const result = await UserService.checkUsername(value,userData.username)
             return result
         }
         
         async function isEmailUnique(value){
-            const result = await UserService.checkEmail(value)
+			const user = await UserService.me();
+            const userData = await UserService.getUserData(user.username)
+            const result = await UserService.checkEmail(value,userData.email)
             return result
         }

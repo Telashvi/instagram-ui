@@ -2,7 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { profileedit } from './profileedit.schema';
 import React, { useEffect, useState,useContext } from 'react';
 import { UserService } from '../../services/user.service';
-import Avatar from '../../common/Avatar/Avatar';
+import avatarDefault from '../../common/Avatar/avatar.jpg';
 import './ProfileEdit.scss';
 function ProfileEdit() {
       const [showSuccess, setSuccess] = useState(false);
@@ -17,7 +17,7 @@ function ProfileEdit() {
             getUser();
       }, []);
       
-      
+      const [editIt,setEditIt] = useState(false)
       const[username ,setUsername] = useState("");
       const[password ,setPassword] = useState("");
       const[bio ,setBio] = useState("");
@@ -31,7 +31,12 @@ function ProfileEdit() {
             setPassword("Same as current")
 			setShowImage(userData.avatar)
       },[userData])
-      
+      useEffect(() => {
+		let avatar=""
+		if (avatarDefault.includes("jpeg")) {
+			avatar=avatarDefault.replace("data:image/jpeg;base64,","");
+			setShowImage(avatar)}
+	},[userData])
       // function togglePassword(){
       //       if (changePassword===false) {
       //             setChangePassword(true)
@@ -39,8 +44,8 @@ function ProfileEdit() {
       //       }
       //       else setChangePassword(false)
       // }
-
-      function submit(){
+		
+    	 function submit(){
             if (password==="Same as current"){
                   setValues({
                         username : username,
@@ -49,8 +54,7 @@ function ProfileEdit() {
                         email:email,
 						avatar: showImage
                   })
-                  UserService.edit(values)
-                  console.log("sent values:",values)
+                  setEditIt(true)
             } if (password!=="Same as current") {
                   setValues({
                         username : username,
@@ -58,12 +62,15 @@ function ProfileEdit() {
                         bio:bio,
                         email:email
                   })
-                  UserService.edit(values)
-                  console.log("sent values:",values)
+				  setEditIt(true)
             }  
       }
       
-
+	  useEffect(() => {
+		UserService.edit(values)
+		console.log("sent values:",values)
+	  },[editIt])
+	  
       function encodeImageFileAsURL(element) {
 		return new Promise((res, rej) => { 
 			var file = element.target.files[0];
