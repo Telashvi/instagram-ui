@@ -11,12 +11,12 @@ import { UserContext } from '../user-context';
 
 function Login() {
 	const history = useHistory();
-	const { setUser } = useContext(UserContext);
+	const { setUser,userObject } = useContext(UserContext);
 	const [showError, setShowError] = useState(false);
 
 	async function submit(values) {
 		setShowError(false);
-		
+		console.log("this is working first","user is:",userObject)
 		const res = await UserService.login(values);
 		if (res.status !== 200) {
 			setShowError(true);
@@ -26,7 +26,9 @@ function Login() {
 		Cookies.set('instagram-user', json.token, { expires: 30 });
 
 		const user = await UserService.me();
+		console.log(user)
 		setUser(user.username);
+		console.log(userObject)
 		history.push('/');
 	}
 

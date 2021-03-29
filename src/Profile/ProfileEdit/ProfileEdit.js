@@ -7,7 +7,7 @@ import './ProfileEdit.scss';
 import { UserContext } from '../../user-context';
 import Cookies from 'js-cookie';
 function ProfileEdit() {
-	const { setUser, user } = useContext(UserContext);
+	const { setUser,  userObject } = useContext(UserContext);
       const [showSuccess, setSuccess] = useState(false);
 	  const [currentUser,setCurrentUser] = useState("")
       async function getUser(){
@@ -20,6 +20,7 @@ function ProfileEdit() {
       const [userData,setUserData]=useState({})
       useEffect(() => {
             getUser();
+			getUser();
       }, []);
       
       const [editIt,setEditIt] = useState(false)
@@ -33,7 +34,6 @@ function ProfileEdit() {
             setUsername(userData.username)
             setEmail(userData.email)
             setBio(userData.bio)
-            setPassword("Same as current")
 			setShowImage(userData.avatar)
       },[userData])
       useEffect(() => {
@@ -44,7 +44,7 @@ function ProfileEdit() {
 	},[userData])
 		
     	 function submit(){
-            if (password==="Same as current"){
+            if (password===""){
                   setValues({
 						currentUser:currentUser,
                         username : username,
@@ -56,7 +56,7 @@ function ProfileEdit() {
 				  
                   setEditIt(true)
 				  setEditIt(false)
-            } if (password!=="Same as current") {
+            } if (password!=="") {
                   setValues({
 						currentUser:currentUser,
                         username : username,
@@ -70,37 +70,31 @@ function ProfileEdit() {
       }
       
 	  useEffect(() => {
+		console.log("this is working first","user is:",userObject)
 		UserService.edit(values)
 		console.log(username)
 		setUser(username)
-		let toSend={username:username,password:userData.password}
-		if (password!=="Same as current"){
+
+		let toSend={}
+		if (password===""){
+			toSend={username:username,password:userData.password}
+		}
+		 
+		if (password!==""){
 			 toSend={username:username,password:password}
 		}
 		async function reCred(toSend) {
 			console.log("toSend:",toSend)
 			const res = await UserService.editLogin(toSend);
-			// if (res.status !== 200) {
-			// 	setShowError(true);
-			// 	return;
-			// }
 			const json = await res.json();
 			Cookies.remove('instagram-user');
 			Cookies.set('instagram-user', json.token, { expires: 30 });
-			
-			// const user = await UserService.me();
-			// setUser(user.username);
-			// history.push('/');
 		}
 		reCred(toSend)
-		console.log("setUser is now:",user)
+		console.log("setUser is now:",userObject)
 	  },[editIt])
 
-	  useEffect(() => {
-		console.log(username)
-		// setUser(username)
-		console.log("setUser is now:",user)
-	  },[username])
+	
       function encodeImageFileAsURL(element) {
 		return new Promise((res, rej) => { 
 			var file = element.target.files[0];
@@ -150,7 +144,7 @@ function ProfileEdit() {
 							</div>
 							 <div className="form-group my-3">
 								<label htmlFor="password">Password</label>
-								 <Field  className="form-control" name="password" id="password" onChange={event => setPassword(event.target.value)} />
+								 <Field  className="form-control" name="password" id="password" placeholder="Same as current" onChange={event => setPassword(event.target.value)} />
 								<ErrorMessage component="small" name="password" className="Register__form__error" />
 							</div>
                                           <div className="form-group my-3">

@@ -1,0 +1,125 @@
+Date : 2021-03-30 02:16:19
+Directory : c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui
+Total : 68 files,  19613 codes, 154 comments, 384 blanks, all 20151 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JSON       |          3 |     17,513 |          0 |          3 |     17,516 |
+| JavaScript |         42 |      1,798 |        131 |        274 |      2,203 |
+| SCSS       |         21 |        243 |          0 |         73 |        316 |
+| Markdown   |          1 |         38 |          0 |         33 |         71 |
+| HTML       |          1 |         21 |         23 |          1 |         45 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                         | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                            |         68 |     19,613 |        154 |        384 |     20,151 |
+| public                                                                                                       |          2 |         46 |         23 |          2 |         71 |
+| src                                                                                                          |         63 |      2,041 |        131 |        347 |      2,519 |
+| src\Explore                                                                                                  |          2 |         24 |          3 |          4 |         31 |
+| src\Feed                                                                                                     |          2 |         21 |          3 |          5 |         29 |
+| src\Header                                                                                                   |          7 |        107 |          1 |         23 |        131 |
+| src\Header\HeaderAvatar                                                                                      |          3 |         31 |          1 |          9 |         41 |
+| src\Header\Menu                                                                                              |          2 |         37 |          0 |          3 |         40 |
+| src\Login                                                                                                    |          4 |        120 |          3 |         26 |        149 |
+| src\Logout                                                                                                   |          1 |         17 |          0 |          3 |         20 |
+| src\PostCreate                                                                                               |          3 |        120 |          0 |         17 |        137 |
+| src\PostEdit                                                                                                 |          2 |         63 |          0 |          5 |         68 |
+| src\PostPage                                                                                                 |          2 |         86 |          0 |         15 |        101 |
+| src\Profile                                                                                                  |          7 |        343 |         47 |         36 |        426 |
+| src\Profile\ProfileEdit                                                                                      |          3 |        201 |         39 |         16 |        256 |
+| src\Profile\ProfileHeader                                                                                    |          2 |         38 |          0 |          5 |         43 |
+| src\Register                                                                                                 |          3 |        177 |         16 |         25 |        218 |
+| src\Search                                                                                                   |          4 |         75 |          0 |         15 |         90 |
+| src\Search\SearchResult                                                                                      |          2 |         37 |          0 |          6 |         43 |
+| src\common                                                                                                   |         13 |        440 |         40 |        111 |        591 |
+| src\common\Avatar                                                                                            |          2 |         32 |          0 |          7 |         39 |
+| src\common\Comments                                                                                          |          6 |        110 |          1 |         22 |        133 |
+| src\common\Comments\Comment                                                                                  |          1 |         39 |          1 |          3 |         43 |
+| src\common\Comments\CommentAdd                                                                               |          2 |         25 |          0 |          6 |         31 |
+| src\common\Comments\CommentDate                                                                              |          1 |         14 |          0 |          6 |         20 |
+| src\common\Post                                                                                              |          5 |        298 |         39 |         82 |        419 |
+| src\common\Post\PostDate                                                                                     |          1 |         14 |          0 |          6 |         20 |
+| src\common\Post\PostLike                                                                                     |          2 |        186 |         39 |         58 |        283 |
+| src\environments                                                                                             |          3 |         13 |          0 |          7 |         20 |
+| src\services                                                                                                 |          2 |        298 |          2 |         34 |        334 |
++--------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                     | language   | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\README.md                                      | Markdown   |         38 |          0 |         33 |         71 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\package-lock.json                              | JSON       |     17,434 |          0 |          1 |     17,435 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\package.json                                   | JSON       |         54 |          0 |          1 |         55 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\public\index.html                              | HTML       |         21 |         23 |          1 |         45 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\public\manifest.json                           | JSON       |         25 |          0 |          1 |         26 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\App.js                                     | JavaScript |         93 |          7 |          5 |        105 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\App.scss                                   | SCSS       |          5 |          0 |          1 |          6 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\App.test.js                                | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Explore\Explore.js                         | JavaScript |         24 |          3 |          3 |         30 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Explore\Explore.scss                       | SCSS       |          0 |          0 |          1 |          1 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Feed\Feed.js                               | JavaScript |         21 |          3 |          4 |         28 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Feed\Feed.scss                             | SCSS       |          0 |          0 |          1 |          1 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Header\Header.js                           | JavaScript |         20 |          0 |          5 |         25 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Header\Header.scss                         | SCSS       |         19 |          0 |          6 |         25 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Header\HeaderAvatar\HeaderAvatar.js        | JavaScript |         26 |          1 |          5 |         32 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Header\HeaderAvatar\HeaderAvatar.scss      | SCSS       |          5 |          0 |          3 |          8 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Header\HeaderAvatar\sadsa.js               | JavaScript |          0 |          0 |          1 |          1 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Header\Menu\Menu.js                        | JavaScript |         37 |          0 |          2 |         39 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Header\Menu\Menu.scss                      | SCSS       |          0 |          0 |          1 |          1 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Login\Login.js                             | JavaScript |         70 |          0 |          7 |         77 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Login\Login.scss                           | SCSS       |         31 |          0 |          9 |         40 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Login\LoginBasic.js                        | JavaScript |         14 |          3 |          6 |         23 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Login\login.schema.js                      | JavaScript |          5 |          0 |          4 |          9 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Logout\Logout.js                           | JavaScript |         17 |          0 |          3 |         20 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\PostCreate\PostCreate.js                   | JavaScript |         86 |          0 |          7 |         93 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\PostCreate\PostCreate.scss                 | SCSS       |         27 |          0 |          8 |         35 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\PostCreate\post-create.schema.js           | JavaScript |          7 |          0 |          2 |          9 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\PostEdit\PostEdit.js                       | JavaScript |         59 |          0 |          5 |         64 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\PostEdit\PostEdit.scss                     | SCSS       |          4 |          0 |          0 |          4 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\PostPage\PostPage.js                       | JavaScript |         56 |          0 |          5 |         61 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\PostPage\PostPage.scss                     | SCSS       |         30 |          0 |         10 |         40 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Profile\Profile.js                         | JavaScript |        104 |          8 |         14 |        126 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Profile\Profile.scss                       | SCSS       |          0 |          0 |          1 |          1 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Profile\ProfileEdit\ProfileEdit.js         | JavaScript |        167 |         13 |         12 |        192 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Profile\ProfileEdit\ProfileEdit.scss       | SCSS       |          3 |          0 |          0 |          3 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Profile\ProfileEdit\profileedit.schema.js  | JavaScript |         31 |         26 |          4 |         61 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Profile\ProfileHeader\ProfileHeader.js     | JavaScript |         35 |          0 |          5 |         40 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Profile\ProfileHeader\ProfileHeader.scss   | SCSS       |          3 |          0 |          0 |          3 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Register\Register.js                       | JavaScript |        120 |          0 |         12 |        132 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Register\Register.scss                     | SCSS       |         30 |          0 |          9 |         39 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Register\register.schema.js                | JavaScript |         27 |         16 |          4 |         47 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Search\Search.js                           | JavaScript |         38 |          0 |          8 |         46 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Search\Search.scss                         | SCSS       |          0 |          0 |          1 |          1 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Search\SearchResult\SearchResult.js        | JavaScript |         22 |          0 |          2 |         24 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\Search\SearchResult\SearchResult.scss      | SCSS       |         15 |          0 |          4 |         19 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\common\Avatar\Avatar.js                    | JavaScript |         17 |          0 |          4 |         21 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\common\Avatar\Avatar.scss                  | SCSS       |         15 |          0 |          3 |         18 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\common\Comments\CommentAdd\CommentAdd.js   | JavaScript |         25 |          0 |          5 |         30 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\common\Comments\CommentAdd\CommentAdd.scss | SCSS       |          0 |          0 |          1 |          1 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\common\Comments\CommentDate\CommentDate.js | JavaScript |         14 |          0 |          6 |         20 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\common\Comments\Comment\Comment.js         | JavaScript |         39 |          1 |          3 |         43 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\common\Comments\Comments.js                | JavaScript |         32 |          0 |          6 |         38 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\common\Comments\Comments.scss              | SCSS       |          0 |          0 |          1 |          1 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\common\Post\Post.js                        | JavaScript |         43 |          0 |          8 |         51 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\common\Post\Post.scss                      | SCSS       |         55 |          0 |         10 |         65 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\common\Post\PostDate\PostDate.js           | JavaScript |         14 |          0 |          6 |         20 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\common\Post\PostLike\PostLike.js           | JavaScript |         68 |          1 |          8 |         77 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\common\Post\PostLike\classexing.js         | JavaScript |        118 |         38 |         50 |        206 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\environments\development.js                | JavaScript |          3 |          0 |          2 |          5 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\environments\index.js                      | JavaScript |          7 |          0 |          3 |         10 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\environments\production.js                 | JavaScript |          3 |          0 |          2 |          5 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\index.js                                   | JavaScript |         15 |          5 |          4 |         24 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\index.scss                                 | SCSS       |          1 |          0 |          3 |          4 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\reportWebVitals.js                         | JavaScript |         12 |          0 |          2 |         14 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\services\post.service.js                   | JavaScript |        120 |          0 |         14 |        134 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\services\user.service.js                   | JavaScript |        178 |          2 |         20 |        200 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\setupTests.js                              | JavaScript |          1 |          4 |          1 |          6 |
+| c:\Users\Elashvili's\Desktop\instagram current 2\instagram-ui\src\user-context.js                            | JavaScript |          3 |          0 |          3 |          6 |
+| Total                                                                                                        |            |     19,613 |        154 |        384 |     20,151 |
++--------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

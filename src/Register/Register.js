@@ -109,8 +109,9 @@ function Register() {
 								<div>
 									<Field type="checkbox" id="agreeToTerms" name="agreeToTerms" className="form-check-input" />
 									<label htmlFor="agreeToTerms" className="form-check-label">Agree to terms</label>
+									<ErrorMessage component="small" name="agreeToTerms" className="Register__form__error" />
 								</div>
-								<ErrorMessage component="small" name="agreeTerms" className="text-danger" />
+								
 							</div>
 							<div className="form-group my-3">
 								{ showSuccess

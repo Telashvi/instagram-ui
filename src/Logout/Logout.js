@@ -1,15 +1,15 @@
-import React,{  useState,useEffect } from 'react';
+import React,{  useState,useEffect,useContext} from 'react';
 import Cookies from 'js-cookie';
 import {  useHistory } from 'react-router-dom';
-function Logout() {
+function Logout(props) {
     const history = useHistory();
-	 function out(){
-		
+	async function out(){
 		Cookies.remove('instagram-user');
         history.push('/login');
+        props.setUser("")
+        props.check()
     }
 
-	
 	return (
     <div>
     <button onClick={out}>Click here to log out</button>

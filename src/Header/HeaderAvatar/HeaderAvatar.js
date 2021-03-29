@@ -6,11 +6,11 @@ import { UserContext } from '../../user-context';
 import { Link } from 'react-router-dom';
 import { UserService } from '../../services/user.service';
 function HeaderAvatar() {
-	const { user } = useContext(UserContext);
+	// const { userObject } = useContext(UserContext);
 	
 	async function getUser(){
-		// const user = await UserService.me();
-		const userData = await UserService.getUserData(user)
+		const user = await UserService.me();
+		const userData = await UserService.getUserData(user.username)
 		setUserData(userData);
   }
   const [userData,setUserData]=useState({})

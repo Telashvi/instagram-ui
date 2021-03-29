@@ -1,6 +1,6 @@
 
 import './App.scss';
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useContext} from 'react';
 import Header from './Header/Header';
 import Register from './Register/Register';
 import { Switch, Route, useHistory } from 'react-router-dom';
@@ -16,13 +16,14 @@ import Search from './Search/Search';
 import ProfileEdit from './Profile/ProfileEdit/ProfileEdit';
 import Logout from './Logout/Logout';
 import Explore from './Explore/Explore';
+import PostEdit from './PostEdit/PostEdit';
 function App() {
     const history = useHistory();
     const [user, setUser] = useState({});
-    
+    const { userObject } = useContext(UserContext);
     useEffect(() => {
         async function getMe() {
-            console.log("this happens")
+            console.log("this is working first","user is:",userObject)
             try {
                 const user = await UserService.me();
                 if (!user) {
@@ -30,21 +31,30 @@ function App() {
                     return;
                 }
                 setUser(user.username);
-                console.log(user)
             } catch(err) {
                 console.log(err);
             }
         }
+        
+        isLoggedIn()
         getMe();
-    }, [history]);
-
+    }, [history,user]);
+    // const [test,setTest] = useState(false)
+    // useEffect(() => {
+    //     console.log(test)
+    //     isLoggedIn()
+    // },[test])
     function isLoggedIn() {
+        console.log("its working",user)
         return Boolean(Object.keys(user).length);
+    }
+    function test(){
+        console.log(Boolean(Object.keys(user).length))
     }
     // מה זה  return Boolean(Object.keys(user).length);
 
   return ( // למה הסדר של הראוטים משנה
-      <UserContext.Provider value={{user, setUser}}>
+      <UserContext.Provider value={{userObject, setUser}}>
         <div className="App d-flex flex-column flex-sm-column-reverse vh-100">
             <div className="flex-grow-1 main">
               <div className="container mt-lg-4">
@@ -71,10 +81,13 @@ function App() {
                         <Search />
                     </Route>
                     <Route path="/logout">
-                        <Logout />
+                        <Logout  check={isLoggedIn} setUser={setUser}/>
                     </Route>
                     <Route path="/explore" >
                         <Explore/>
+                    </Route>
+                    <Route path="/postedit/:postId" >
+                        <PostEdit/>
                     </Route>
                     <Route path="/" exact>
                         <Feed />

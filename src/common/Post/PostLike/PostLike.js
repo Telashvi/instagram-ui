@@ -1,9 +1,10 @@
 import React, {  useState,useEffect } from 'react';
 import { PostService } from '../../../services/post.service';
 import { UserService } from '../../../services/user.service';
-import { useParams } from 'react-router-dom';
+import { useParams,useHistory } from 'react-router-dom';
 import Post from '../Post';
 function PostLike({ data,getPosts   }) {
+	const history = useHistory();
 	const [likeButton,setLikeButton]=useState("like")
 	const [gaveLikeTo,setGaveLikeTo]=useState(data.user.username)
 	const [likesLength,setLikesLength]=useState("")
@@ -59,10 +60,14 @@ async function toggleLike(){
 			getPosts()
 		}
 	}
+	function editPost(){
+		history.push('/postedit/'+data._id)
+	}
 	return (
 		<div className="col-12 col-md-4">
 			<button onClick={toggleLike}>{likeButton}</button>
-			{showDelete && <button onClick={deletePost}>delete</button>}
+			{showDelete && <div><button onClick={deletePost}>delete</button>
+			<button onClick={editPost}>edit</button></div>}
 			<div>Likes:{likesLength}</div>
 		</div>
 	);
