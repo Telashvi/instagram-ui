@@ -5,9 +5,9 @@ import { UserService } from '../../services/user.service';
 import avatarDefault from '../../common/Avatar/avatar.jpg';
 import './ProfileEdit.scss';
 import { UserContext } from '../../user-context';
+import Cookies from 'js-cookie';
 function ProfileEdit() {
 	const { setUser, user } = useContext(UserContext);
-	console.log(user);
       const [showSuccess, setSuccess] = useState(false);
 	  const [currentUser,setCurrentUser] = useState("")
       async function getUser(){
@@ -42,13 +42,6 @@ function ProfileEdit() {
 			avatar=avatarDefault.replace("data:image/jpeg;base64,","");
 			setShowImage(avatar)}
 	},[userData])
-      // function togglePassword(){
-      //       if (changePassword===false) {
-      //             setChangePassword(true)
-      //             setPassword("")
-      //       }
-      //       else setChangePassword(false)
-      // }
 		
     	 function submit(){
             if (password==="Same as current"){
@@ -60,9 +53,9 @@ function ProfileEdit() {
                         email:email,
 						avatar: showImage
                   })
-				  setUser(username)
-				  console.log("setUser is now:",user)
+				  
                   setEditIt(true)
+				  setEditIt(false)
             } if (password!=="Same as current") {
                   setValues({
 						currentUser:currentUser,
@@ -72,15 +65,42 @@ function ProfileEdit() {
                         email:email
                   })
 				  setEditIt(true)
-				  setUser(username)
+				  setEditIt(false)
             }  
       }
       
 	  useEffect(() => {
 		UserService.edit(values)
-		console.log("sent values:",values)
+		console.log(username)
+		setUser(username)
+		let toSend={username:username,password:userData.password}
+		if (password!=="Same as current"){
+			 toSend={username:username,password:password}
+		}
+		async function reCred(toSend) {
+			console.log("toSend:",toSend)
+			const res = await UserService.editLogin(toSend);
+			// if (res.status !== 200) {
+			// 	setShowError(true);
+			// 	return;
+			// }
+			const json = await res.json();
+			Cookies.remove('instagram-user');
+			Cookies.set('instagram-user', json.token, { expires: 30 });
+			
+			// const user = await UserService.me();
+			// setUser(user.username);
+			// history.push('/');
+		}
+		reCred(toSend)
+		console.log("setUser is now:",user)
 	  },[editIt])
-	  
+
+	  useEffect(() => {
+		console.log(username)
+		// setUser(username)
+		console.log("setUser is now:",user)
+	  },[username])
       function encodeImageFileAsURL(element) {
 		return new Promise((res, rej) => { 
 			var file = element.target.files[0];
@@ -120,7 +140,7 @@ function ProfileEdit() {
 						<Form className="Register__form mt-5 px-0" noValidate>
 							<div className="form-group my-3">
 								<label htmlFor="username">Username</label>
-								<Field type="username" className="form-control" id="username" name="username" onChange={event => setUsername(event.target.value)}  />
+								<Field type="username" className="form-control" id="username" name="username" onChange={event => {setUsername(event.target.value) }}  />
 								<ErrorMessage component="small" name="username" className="Register__form__error" />
 							</div>
 							<div className="form-group my-3">

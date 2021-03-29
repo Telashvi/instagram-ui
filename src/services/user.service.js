@@ -72,6 +72,16 @@ export class UserService {
 		})
 		
 	}
+	static editLogin(credentials) {
+		return fetch(environment.apiUrl + '/user/editlogin', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(credentials)
+		})
+		
+	}
 	
 	static async getPosts(username) {
 		const res = await fetch(environment.apiUrl + '/user/' + username + '/posts', {

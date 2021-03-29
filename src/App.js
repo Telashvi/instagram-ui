@@ -19,16 +19,18 @@ import Explore from './Explore/Explore';
 function App() {
     const history = useHistory();
     const [user, setUser] = useState({});
-
+    
     useEffect(() => {
         async function getMe() {
+            console.log("this happens")
             try {
                 const user = await UserService.me();
                 if (!user) {
                     history.push('/login');
                     return;
                 }
-                setUser(user);
+                setUser(user.username);
+                console.log(user)
             } catch(err) {
                 console.log(err);
             }

@@ -26,7 +26,7 @@ function Login() {
 		Cookies.set('instagram-user', json.token, { expires: 30 });
 
 		const user = await UserService.me();
-		setUser(user);
+		setUser(user.username);
 		history.push('/');
 	}
 

@@ -6,23 +6,18 @@ import { UserContext } from '../../user-context';
 import { Link } from 'react-router-dom';
 import { UserService } from '../../services/user.service';
 function HeaderAvatar() {
-	// const { user } = useContext(UserContext);
-	// const { setUser } = useContext(UserContext);
+	const { user } = useContext(UserContext);
+	
 	async function getUser(){
-		const user = await UserService.me();
-		console.log(user)
-		const userData = await UserService.getUserData(user.username)
+		// const user = await UserService.me();
+		const userData = await UserService.getUserData(user)
 		setUserData(userData);
   }
   const [userData,setUserData]=useState({})
   useEffect(() => {
 		getUser();
-		console.log(userData)
+		
   }, []);
-  useEffect(() => {
-	console.log(userData)
-	
-}, [userData]);
 	return (
 		<div className="HeaderAvatar">
 			<Link to={'/profile/' + userData.username}>
