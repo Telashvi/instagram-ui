@@ -14,7 +14,7 @@ function PostCreate() {
 		const data = new FormData();
 		data.append('image', values.image);
 		data.append('description', values.description);
-
+		const user = await UserService.me();
 		try {
 			await fetch(environment.apiUrl + '/post', {
 				method: 'PUT',
@@ -23,7 +23,7 @@ function PostCreate() {
 					Authorization: UserService.getToken()
 				}
 			});
-			history.push('/explore');
+			history.push('/profile/'+user.username);
 		} catch(err) {
 			console.log(err);
 		}

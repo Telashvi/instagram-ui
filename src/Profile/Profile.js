@@ -20,7 +20,8 @@ import { UserContext } from '../user-context';
 	const [followingUserId,setFollowingUserId] = useState("")
 	const [followedUserId,setFollowedUserId] = useState("")
 	const [userData,setUserData]=useState("")
-
+	const [showGoPost,setShowGoPost]=useState(false)
+	const [checkPostsLength,setCheckPostsLength]=useState(false)
 	useEffect(async() => {
 		const user = await UserService.me(); // following user
 		if (username===user.username){
@@ -32,6 +33,7 @@ import { UserContext } from '../user-context';
 			try {
 				const posts = await UserService.getPosts(username);
 				setPosts(posts);
+				setCheckPostsLength(true)
 			} catch(err) {
 				console.log(err);
 			}
@@ -56,13 +58,27 @@ import { UserContext } from '../user-context';
 			setFollowedUserId(data._id)
 			setFollowingUserId(user._id)
 		}
+		getPosts();
 		getUserData()
 		checkIfFollow()
-		getPosts();
+		
+		
 		
 	}, [username,followingUserId]);
 	
-	
+	useEffect(() => {
+		if (checkPostsLength===true){
+			if (posts.length===0){
+				setShowGoPost(true)
+			} else {
+				setShowGoPost(false)
+			}
+		}
+	},[checkPostsLength])
+
+	useEffect(() => {
+
+	},[]);
 	
 	async function follow(){
 		await UserService.follow(followingUserId,followedUserId)
@@ -109,6 +125,7 @@ import { UserContext } from '../user-context';
 					<button onClick={unfollow}>Unfollow   <FontAwesomeIcon icon={faMemory} /></button>
 			</div>}
 		<hr />
+		{showGoPost && <Link to={'/post/create'   }>You haven't posted anything yet! click here to post something...</Link>}
 		<div className="row">
 			{posts.map(post => (
 				<Post key={post._id} data={post} username={{username}} getPosts={getPosts} />

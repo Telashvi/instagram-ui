@@ -6,7 +6,7 @@ import Post from '../Post';
 function PostLike({ data,getPosts   }) {
 	const history = useHistory();
 	const [likeButton,setLikeButton]=useState("like")
-	const [gaveLikeTo,setGaveLikeTo]=useState(data.user.username)
+	const [gaveLikeTo,setGaveLikeTo]=useState(data.user._id)
 	const [likesLength,setLikesLength]=useState("")
 	const [showDelete,setShowDelete]=useState(true)
 	const { username } = useParams();
@@ -23,7 +23,7 @@ function PostLike({ data,getPosts   }) {
 			const LoggedInUser = await UserService.me()
 			// מתוך יוזאפקט, הגייבלייקטו לא נשמר [username,gaveLikeTo,data._id]למה כשאני מוציא את 
 			if (username!==undefined) setGaveLikeTo(username)
-			let isLiked=await PostService.checkIfLiked(data._id,gaveLikeTo,LoggedInUser.username)
+			let isLiked=await PostService.checkIfLiked(data._id,gaveLikeTo,LoggedInUser._id)
 			console.log(LoggedInUser.username,data.user.username)
 			if (isLiked===200){
 				setLikeButton("unlike")
@@ -44,11 +44,11 @@ async function toggleLike(){
 		const LoggedInUser = await UserService.me();
 		if (likeButton==="like"){
 			console.log(data)
-			PostService.like(data._id,gaveLikeTo,LoggedInUser.username)
+			PostService.like(data._id,gaveLikeTo,LoggedInUser._id)
 			setLikeButton("unlike")
 		}
 		if (likeButton==="unlike"){
-			PostService.unlike(data._id,LoggedInUser.username)
+			PostService.unlike(data._id,LoggedInUser._id)
 			setLikeButton("like")
 		}
 		
