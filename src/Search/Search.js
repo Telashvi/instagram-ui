@@ -7,7 +7,7 @@ function Search() {
 
 	const [query, setQuery] = useState('');
 	const [users, setUsers] = useState([]);
-
+	const [usersChange,setUsersChange]=useState(false)
 	useEffect(() => {
 		if (!query) {
 			setUsers([]);
@@ -17,6 +17,7 @@ function Search() {
 		async function getUsers() {
 			try {
 				setUsers(await UserService.search(query));
+				
 			} catch (err) {
 				console.log(err);
 			}
@@ -25,20 +26,25 @@ function Search() {
 		getUsers();
 	}, [query]);
 
+	useEffect(() =>{
+		hasNoResults()
+	},[users])
+
 	function hasNoResults() {
-		return users.length === 0 && query.length > 0;
+		if ((users.length === 0 && query.length > 0)) setUsersChange(true)
 	}
 
 	return (
 		<div>
 			<h1>Search</h1>
-			<input value={query} onChange={(e) => setQuery(e.target.value)}/>
+			<input value={query} onChange={(e) => {setQuery(e.target.value)
+			setUsersChange(false)}}/>
 			<div className="row mt-4">
 				{users.map(user => {
 					return <SearchResult key={user._id} user={user} />
 				})}
 			</div>
-			{hasNoResults() && 'Sorry, no user!'}
+			{usersChange && 'Sorry, no user!'}
 		</div>
 	);
 }
