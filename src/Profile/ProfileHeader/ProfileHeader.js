@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { UserService } from '../../services/user.service';
 import Avatar from '../../common/Avatar/Avatar';
 
- function ProfileHeader({ username, postNum,followersNum }) {
+ function ProfileHeader({ username, postNum,followersNum,isFollow }) {
 
 	const [user, setUser] = useState({});
 	const [userData,setUserData]= useState([])
@@ -21,10 +21,10 @@ import Avatar from '../../common/Avatar/Avatar';
 		}
 		getUser();
 		console.log(userData)
-	}, []);
-	useEffect(() => {
-		console.log(userData)
-	  }, [userData])
+	}, [isFollow]);
+	// useEffect(() => {
+	// 	console.log(userData)
+	//   }, [userData])
 	return (
 		<div className="mt-5">
 			<Avatar image={user.avatar} size="lg" />

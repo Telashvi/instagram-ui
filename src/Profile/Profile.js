@@ -24,6 +24,7 @@ import { UserContext } from '../user-context';
 	const [checkPostsLength,setCheckPostsLength]=useState(false)
 	useEffect(async() => {
 		const user = await UserService.me(); // following user
+		console.log("So the usernames are:",username,user.username)
 		if (username===user.username){
 			setShowEdit(true)
 		} else {
@@ -66,9 +67,10 @@ import { UserContext } from '../user-context';
 		
 	}, [username,followingUserId]);
 	
-	useEffect(() => {
+	useEffect(async() => {
+		const user = await UserService.me();
 		if (checkPostsLength===true){
-			if (posts.length===0){
+			if (posts.length===0 && username===user.username){
 				setShowGoPost(true)
 			} else {
 				setShowGoPost(false)
@@ -111,7 +113,7 @@ import { UserContext } from '../user-context';
 	// }
 	return (
 	<>
-		<ProfileHeader username={username} postNum={posts.length}  />
+		<ProfileHeader username={username} postNum={posts.length} isFollow={showFollow}  />
 		{showEdit && <div className="nav-item">
 				<Link className="nav-link" to={"/profile/"+username+"/edit"}>
 					<FontAwesomeIcon icon={faPencilAlt} />
