@@ -48,9 +48,7 @@ function App() {
         console.log("its working",user)
         return Boolean(Object.keys(user).length);
     }
-    function test(){
-        console.log(Boolean(Object.keys(user).length))
-    }
+    
     // מה זה  return Boolean(Object.keys(user).length);
 
   return ( // למה הסדר של הראוטים משנה
