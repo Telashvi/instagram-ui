@@ -3,6 +3,7 @@ import { PostService } from '../../../services/post.service';
 import { UserService } from '../../../services/user.service';
 import { useParams,useHistory } from 'react-router-dom';
 import Post from '../Post';
+import './PostLike.scss';
 function PostLike({ data,getPosts   }) {
 	const history = useHistory();
 	const [likeButton,setLikeButton]=useState("like")
@@ -64,12 +65,14 @@ async function toggleLike(){
 		history.push('/postedit/'+data._id)
 	}
 	return (
-		<div className="col-12 col-md-4">
-			<button onClick={toggleLike}>{likeButton}</button>
-			{showDelete && <div><button onClick={deletePost}>delete</button>
-			<button onClick={editPost}>edit</button></div>}
+		<div className="test">
+			<button onClick={toggleLike} className="btn btn-primary">{likeButton}</button>
+			{showDelete && <div><button onClick={deletePost}className="btn btn-danger">delete</button>
+			<button onClick={editPost}className="btn btn-secondary">edit</button></div>}
 			<div>Likes:{likesLength}</div>
 		</div>
+		
+		
 	);
 }
 
